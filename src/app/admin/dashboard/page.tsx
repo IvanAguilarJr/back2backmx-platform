@@ -158,7 +158,7 @@ export default function DashboardPage() {
   return (
     <main className="min-h-screen bg-bg px-4 pb-24 pt-10 sm:px-6">
       <div className="mx-auto max-w-6xl">
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <div className="flex items-center gap-2">
               <Logo className="h-8" />
@@ -174,7 +174,7 @@ export default function DashboardPage() {
               cómo varía por mes.
             </p>
           </div>
-          <div className="flex shrink-0 items-center gap-3">
+          <div className="flex shrink-0 flex-wrap items-center gap-3">
             <NavLink href="/">Ver como familia</NavLink>
             <NavLink onClick={handleSignOut}>Cerrar sesión</NavLink>
           </div>
@@ -227,30 +227,32 @@ export default function DashboardPage() {
               <h2 className="font-display text-lg font-bold text-ink">
                 Visitas totales por mes
               </h2>
-              <div className="mt-4 flex h-48 items-end gap-3 rounded-2xl border border-line bg-paper-soft p-4">
-                {monthlyTotals.map((m) => {
-                  const heightPct = (m.count / maxMonthly) * 100;
-                  const highlighted = selectedMonth === m.key;
-                  return (
-                    <div
-                      key={m.key}
-                      className="flex h-full flex-1 flex-col items-center justify-end gap-2"
-                    >
-                      <span className="text-xs font-semibold text-ink">{m.count}</span>
+              <div className="mt-4 overflow-x-auto rounded-2xl border border-line bg-paper-soft p-4">
+                <div className="flex h-48 items-end gap-3">
+                  {monthlyTotals.map((m) => {
+                    const heightPct = (m.count / maxMonthly) * 100;
+                    const highlighted = selectedMonth === m.key;
+                    return (
                       <div
-                        className="w-full rounded-t-md transition-all"
-                        style={{
-                          height: `${heightPct}%`,
-                          minHeight: m.count > 0 ? "4px" : "2px",
-                          backgroundColor: highlighted ? "#FFC500" : "#000000",
-                        }}
-                      />
-                      <span className="text-center text-[11px] leading-tight text-muted">
-                        {m.label}
-                      </span>
-                    </div>
-                  );
-                })}
+                        key={m.key}
+                        className="flex h-full w-14 shrink-0 flex-1 flex-col items-center justify-end gap-2 sm:w-auto"
+                      >
+                        <span className="text-xs font-semibold text-ink">{m.count}</span>
+                        <div
+                          className="w-full rounded-t-md transition-all"
+                          style={{
+                            height: `${heightPct}%`,
+                            minHeight: m.count > 0 ? "4px" : "2px",
+                            backgroundColor: highlighted ? "#FFC500" : "#000000",
+                          }}
+                        />
+                        <span className="text-center text-[11px] leading-tight text-muted">
+                          {m.label}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </section>
 
@@ -279,16 +281,16 @@ export default function DashboardPage() {
                 <p className="mt-4 text-muted">Aún no hay visitas registradas.</p>
               ) : (
                 <div className="mt-4 overflow-x-auto rounded-2xl border border-line">
-                  <table className="w-full border-collapse text-sm">
+                  <table className="w-full min-w-[640px] border-collapse text-sm">
                     <thead>
                       <tr>
-                        <th className="border-b border-line bg-paper-soft px-4 py-2 text-left font-semibold text-ink">
+                        <th className="whitespace-nowrap border-b border-line bg-paper-soft px-4 py-2 text-left font-semibold text-ink">
                           Módulo
                         </th>
                         {months.map((m) => (
                           <th
                             key={m.key}
-                            className="border-b border-line bg-paper-soft px-3 py-2 text-center font-semibold text-ink"
+                            className="whitespace-nowrap border-b border-line bg-paper-soft px-3 py-2 text-center font-semibold text-ink"
                           >
                             {m.label}
                           </th>
@@ -298,7 +300,7 @@ export default function DashboardPage() {
                     <tbody>
                       {heatmap.rows.map((row) => (
                         <tr key={row.moduleId}>
-                          <td className="border-b border-line px-4 py-2 font-medium text-ink">
+                          <td className="whitespace-nowrap border-b border-line px-4 py-2 font-medium text-ink">
                             <span className="inline-flex items-center gap-2">
                               {row.module && <Icon name={row.module.icon} className="size-4" />}
                               {row.module?.title ?? row.moduleId}

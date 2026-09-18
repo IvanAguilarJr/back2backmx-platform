@@ -19,7 +19,7 @@ export default function AdminTabs() {
           <Link
             key={tab.href}
             href={tab.href}
-            className={`rounded-full px-4 py-1.5 text-sm font-semibold transition-colors ${
+            className={`rounded-full px-4 py-2.5 text-sm font-semibold transition-colors ${
               active ? "bg-ink text-bg" : "text-muted hover:text-ink"
             }`}
           >

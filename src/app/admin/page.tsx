@@ -59,7 +59,7 @@ export default function AdminPage() {
   return (
     <main className="min-h-screen bg-bg px-4 pb-24 pt-10 sm:px-6">
       <div className="mx-auto max-w-6xl">
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <div className="flex items-center gap-2">
               <Logo className="h-8" />
@@ -74,7 +74,7 @@ export default function AdminPage() {
               Administra los módulos y las piezas que ve cada familia.
             </p>
           </div>
-          <div className="flex shrink-0 items-center gap-3">
+          <div className="flex shrink-0 flex-wrap items-center gap-3">
             <NavLink href="/">Ver como familia</NavLink>
             <NavLink onClick={handleSignOut}>Cerrar sesión</NavLink>
           </div>
@@ -177,7 +177,7 @@ function ModuleCard({
           type="button"
           onClick={onEdit}
           aria-label="Editar módulo"
-          className="flex size-8 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-ink"
+          className="flex size-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-ink"
         >
           <PencilIcon />
         </button>
@@ -185,7 +185,7 @@ function ModuleCard({
           type="button"
           onClick={onDelete}
           aria-label="Eliminar módulo"
-          className="flex size-8 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-ink"
+          className="flex size-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-ink"
         >
           <TrashIcon />
         </button>

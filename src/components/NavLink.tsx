@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 const navLinkClass =
-  "inline-flex items-center rounded-full border-[1.5px] border-line px-4 py-[9px] text-sm font-semibold text-muted transition-colors duration-150 hover:border-ink hover:text-ink";
+  "inline-flex items-center rounded-full border-[1.5px] border-line px-4 py-2.5 text-sm font-semibold text-muted transition-colors duration-150 hover:border-ink hover:text-ink";
 
 type NavLinkProps = {
   children: ReactNode;

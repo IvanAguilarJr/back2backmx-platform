@@ -453,7 +453,7 @@ function DynamicList({
             type="button"
             onClick={() => onChange(items.filter((_, idx) => idx !== i))}
             aria-label="Quitar punto"
-            className="flex size-8 shrink-0 items-center justify-center rounded-full border border-line text-ink hover:border-ink"
+            className="flex size-9 shrink-0 items-center justify-center rounded-full border border-line text-ink hover:border-ink"
           >
             ×
           </button>

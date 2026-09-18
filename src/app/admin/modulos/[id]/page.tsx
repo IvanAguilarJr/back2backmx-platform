@@ -75,7 +75,7 @@ export default function AdminModulePiecesPage() {
               </div>
             </div>
 
-            <div className="mt-8 flex items-center justify-between">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-sm font-medium text-muted">
                 {pieces.length} pieza{pieces.length === 1 ? "" : "s"} de contenido
               </p>
@@ -83,7 +83,7 @@ export default function AdminModulePiecesPage() {
                 type="button"
                 disabled={loading}
                 onClick={() => setShowCreateModal(true)}
-                className="rounded-full bg-yellow px-5 py-2.5 font-medium text-ink transition-colors hover:bg-yellow-deep disabled:cursor-not-allowed disabled:opacity-50"
+                className="w-full rounded-full bg-yellow px-5 py-2.5 font-medium text-ink transition-colors hover:bg-yellow-deep disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
               >
                 + Nuevo recurso
               </button>
@@ -187,7 +187,7 @@ function PieceRow({
           type="button"
           onClick={onEdit}
           aria-label="Editar pieza"
-          className="flex size-8 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-ink"
+          className="flex size-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-ink"
         >
           <PencilIcon />
         </button>
@@ -195,7 +195,7 @@ function PieceRow({
           type="button"
           onClick={onDelete}
           aria-label="Eliminar pieza"
-          className="flex size-8 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-ink"
+          className="flex size-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-ink"
         >
           <TrashIcon />
         </button>

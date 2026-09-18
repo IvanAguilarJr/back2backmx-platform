@@ -17,7 +17,7 @@ export default async function ExplorarPage() {
         </div>
 
         <div className="mt-8 text-center">
-          <h1 className="font-display text-4xl font-extrabold text-ink sm:text-5xl">
+          <h1 className="font-display text-3xl font-extrabold text-ink sm:text-4xl lg:text-5xl">
             Explora los módulos
           </h1>
           <p className="mt-2 text-muted">
