@@ -2,15 +2,20 @@ import { notFound } from "next/navigation";
 import Icon from "@/components/Icon";
 import Logo from "@/components/Logo";
 import ModuleView from "@/components/ModuleView";
+import ModuleVisitTracker from "@/components/ModuleVisitTracker";
 import NavLink from "@/components/NavLink";
 import { getModule, getPiecesForModule, filterPiecesForAge } from "@/lib/modules";
+import type { VisitSource } from "@/lib/analytics";
 
 export const revalidate = 60;
 
 export default async function ModuloPage(props: PageProps<"/modulo/[id]">) {
   const { id } = await props.params;
-  const { age: ageParam } = await props.searchParams;
+  const { age: ageParam, source: sourceParam, gender: genderParam } =
+    await props.searchParams;
   const age = typeof ageParam === "string" ? ageParam : null;
+  const gender = typeof genderParam === "string" ? genderParam : null;
+  const source: VisitSource = sourceParam === "buscar" ? "buscar" : "explorar";
 
   const module = await getModule(id);
   if (!module) notFound();
@@ -20,6 +25,7 @@ export default async function ModuloPage(props: PageProps<"/modulo/[id]">) {
 
   return (
     <main className="min-h-screen bg-bg px-4 pb-24 pt-10 sm:px-6">
+      <ModuleVisitTracker moduleId={module.id} source={source} age={age} gender={gender} />
       <div className="mx-auto max-w-4xl">
         <div className="flex items-center justify-between">
           <Logo className="h-8" />

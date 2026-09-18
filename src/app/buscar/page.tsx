@@ -55,6 +55,7 @@ export default function BuscarPage() {
       ) : (
         <ResultsScreen
           age={age}
+          gender={gender}
           modules={selectedModules}
           onBack={() => setStep("quiz")}
         />
@@ -161,13 +162,22 @@ function QuizScreen({
 
 function ResultsScreen({
   age,
+  gender,
   modules,
   onBack,
 }: {
   age: string | null;
+  gender: string | null;
   modules: Module[];
   onBack: () => void;
 }) {
+  function moduleHref(moduleId: string) {
+    const params = new URLSearchParams({ source: "buscar" });
+    if (age) params.set("age", age);
+    if (gender) params.set("gender", gender);
+    return `/modulo/${moduleId}?${params.toString()}`;
+  }
+
   return (
     <div className="mx-auto mt-10 max-w-5xl">
       <div className="flex items-center justify-between">
@@ -179,11 +189,7 @@ function ResultsScreen({
 
       <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {modules.map((mod) => (
-          <ModuleCard
-            key={mod.id}
-            module={mod}
-            href={age ? `/modulo/${mod.id}?age=${age}` : `/modulo/${mod.id}`}
-          />
+          <ModuleCard key={mod.id} module={mod} href={moduleHref(mod.id)} />
         ))}
       </div>
     </div>

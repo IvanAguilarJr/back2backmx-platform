@@ -11,6 +11,7 @@ import {
   getPiecesForModule,
 } from "@/lib/modules";
 import ModuleFormModal from "@/components/ModuleFormModal";
+import AdminTabs from "@/components/AdminTabs";
 import Icon from "@/components/Icon";
 import Logo from "@/components/Logo";
 import NavLink from "@/components/NavLink";
@@ -79,7 +80,8 @@ export default function AdminPage() {
           </div>
         </div>
 
-        <div className="mt-6 flex justify-end">
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
+          <AdminTabs />
           <button
             type="button"
             disabled={loading}
